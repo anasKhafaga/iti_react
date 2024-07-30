@@ -7,16 +7,23 @@ interface ProductCardProps extends ComponentProps<'div'> {
 }
 
 const ProductCard = ({ name, price = 'N/A', image, children, ...props }: ProductCardProps) => {
+  if(!Boolean(name)) {
+    return null;
+  }
+  
   return (
     <div className="product-card" {...props}>
-      <img src={image} alt={`${name} image`} className="product-image" />
-      
+      {Boolean(image) ? 
+        <img src={image} alt={`${name} image`} className="product-image" />
+        :
+        <h3>No image provided</h3>
+      }
       <h2 className="product-name">{name}</h2>
       
-      <p className="product-price">{price}</p>
+      <p className="product-price">{Boolean(price) ? price : 'This item is currently unavilable'}</p>
 
       <div className="product-children">
-        {children}
+        {Boolean(price) && children}
       </div>
     </div>
   );
