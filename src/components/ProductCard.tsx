@@ -18,7 +18,7 @@ const ProductCard = ({ name, price = 'N/A', image, children, ...props }: Product
         :
         <h3>No image provided</h3>
       }
-      <h2 className="product-name">{name}</h2>
+      <h2 className="iti-flex">{name}</h2>
       
       <p className="product-price">{Boolean(price) ? price : 'This item is currently unavilable'}</p>
 
