@@ -1,13 +1,18 @@
 import type { ComponentProps } from "react";
-import React from "react";
+import React, { useState } from "react";
 
 interface ProductCardProps extends ComponentProps<'div'> {
   name: string;
   price: string;
   image: string;  
+  prodID: number;
+  setCartItems: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
-const ProductCard = ({ name, price = 'N/A', image, children, ...props }: ProductCardProps) => {
+const ProductCard = ({ name, price = 'N/A', image, children, prodID, setCartItems, ...props }: ProductCardProps) => {
+
+  const [added, setAdded] = useState(false);
+  
   if(!Boolean(name)) {
     return null;
   }
@@ -15,7 +20,11 @@ const ProductCard = ({ name, price = 'N/A', image, children, ...props }: Product
   const handleAddingItem = (name: string, e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     console.log(e.target, e.currentTarget);
-    console.log(`${name} is added to the cart`);
+    if(!added) {
+      console.log(`${name} is added to the cart`);
+      setAdded(true);
+      setCartItems(items => [...items, prodID])
+    }
   };
   
   return (
@@ -30,7 +39,7 @@ const ProductCard = ({ name, price = 'N/A', image, children, ...props }: Product
       <p className="product-price">{Boolean(price) ? price : 'This item is currently unavilable'}</p>
 
       <div className="product-children">
-        <button onClick={handleAddingItem.bind(null, name)}>Add to Cart</button>
+        <button onClick={handleAddingItem.bind(null, name)}>{added? "Added" : "Add to Cart"}</button>
         <button>Wishlist</button>
       </div>
     </div>
