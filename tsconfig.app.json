@@ -16,6 +16,11 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
+    "paths": {
+      "components/*": ["./src/components/*"],
+      "pages/*": ["./src/pages/*"],
+      "contexts/*": ["./src/contexts/*"]
+    },
 
     /* Linting */
     "strict": true,
