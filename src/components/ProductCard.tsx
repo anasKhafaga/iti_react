@@ -1,4 +1,5 @@
 import type { ComponentProps } from "react";
+import React from "react";
 
 interface ProductCardProps extends ComponentProps<'div'> {
   name: string;
@@ -10,6 +11,12 @@ const ProductCard = ({ name, price = 'N/A', image, children, ...props }: Product
   if(!Boolean(name)) {
     return null;
   }
+  
+  const handleAddingItem = (name: string, e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    console.log(e.target, e.currentTarget);
+    console.log(`${name} is added to the cart`);
+  };
   
   return (
     <div className="product-card" {...props}>
@@ -23,7 +30,8 @@ const ProductCard = ({ name, price = 'N/A', image, children, ...props }: Product
       <p className="product-price">{Boolean(price) ? price : 'This item is currently unavilable'}</p>
 
       <div className="product-children">
-        {Boolean(price) && children}
+        <button onClick={handleAddingItem.bind(null, name)}>Add to Cart</button>
+        <button>Wishlist</button>
       </div>
     </div>
   );

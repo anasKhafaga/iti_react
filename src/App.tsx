@@ -6,14 +6,12 @@ function App() {
     <main className='container'>
       {data.map(record => (
         <ProductCard 
+          key={record.id}
           name={record.name}
           price={record.price} 
           image={record.image} 
           className="custom-card"
-        >
-          <button className=''>Add to Cart</button>
-          <button>Wishlist</button>
-        </ProductCard>
+        />
       ))}
     </main>
   )
