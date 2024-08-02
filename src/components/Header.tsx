@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import NavItem from "./NavItem"
-import { AppContext } from "contexts/AppContext"
+import { AppContext } from "../contexts/AppContext"
 import { Link } from "react-router-dom"
 
 const navItems = [

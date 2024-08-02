@@ -1,11 +1,11 @@
 import { useState } from "react"
-import Layout from "components/Layout"
-import Cart from "pages/Cart"
-import Home from "pages/Home"
-import Profile from "pages/Profile"
+import Layout from "./components/Layout"
+import Cart from "./pages/Cart"
+import Home from "./pages/Home"
+import Profile from "./pages/Profile"
 import { Route, BrowserRouter, Switch, useLocation, Redirect } from "react-router-dom" 
-import { AppContext, User } from "contexts/AppContext"
-import { LoginForm } from "components/LoginForm"
+import { AppContext, User } from "./contexts/AppContext"
+import { LoginForm } from "./components/LoginForm"
 
 function App() {
 
