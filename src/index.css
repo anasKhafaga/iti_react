@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .nav-item-active {
+    @apply iti-block iti-py-2 iti-pr-4 iti-pl-3 iti-text-white iti-rounded iti-bg-blue-700 lg:iti-bg-transparent lg:iti-text-blue-700 lg:iti-p-0 dark:iti-text-white;
+  }
+
+  .nav-item {
+    @apply iti-block iti-py-2 iti-pr-4 iti-pl-3 iti-text-gray-700 iti-border-b iti-border-gray-100 hover:iti-bg-gray-50 lg:hover:iti-bg-transparent lg:iti-border-0 lg:hover:iti-text-blue-700 lg:iti-p-0 dark:iti-text-gray-400 lg:dark:hover:iti-text-white dark:hover:iti-bg-gray-700 dark:hover:iti-text-white lg:dark:hover:iti-bg-transparent dark:iti-border-gray-700;
+  }
+
+  .btn-login {
+    @apply iti-text-gray-800 dark:iti-text-white hover:iti-bg-gray-50 focus:iti-ring-4 focus:iti-ring-gray-300 iti-font-medium iti-rounded-lg iti-text-sm iti-px-4 lg:iti-px-5 iti-py-2 lg:iti-py-2.5 iti-mr-2 dark:hover:iti-bg-gray-700 focus:iti-outline-none dark:focus:iti-ring-gray-800;
+  }
+
+  .btn-logout {
+    @apply iti-text-red-800 dark:iti-text-red-800 iti-bg-white hover:iti-bg-opacity-90 dark:hover:iti-bg-opacity-90 focus:iti-ring-4 focus:iti-ring-gray-300 iti-font-medium iti-rounded-lg iti-text-sm iti-px-4 lg:iti-px-5 iti-py-2 lg:iti-py-2.5 iti-mr-2 focus:iti-outline-none dark:focus:iti-ring-gray-800;
+  }
+
+  .btn-get-started {
+    @apply iti-text-white iti-bg-blue-700 hover:iti-bg-blue-800 focus:iti-ring-4 focus:iti-ring-blue-300 iti-font-medium iti-rounded-lg iti-text-sm iti-px-4 lg:iti-px-5 iti-py-2 lg:iti-py-2.5 iti-mr-2 dark:iti-bg-blue-600 dark:hover:iti-bg-blue-700 focus:iti-outline-none dark:focus:iti-ring-blue-800;
+  }
+
+  .input-login {
+    @apply iti-bg-gray-50 iti-border iti-border-gray-300 iti-text-gray-900 iti-rounded-lg focus:iti-ring-blue-600 focus:iti-border-blue-600 iti-block iti-w-full iti-p-2.5 dark:iti-bg-gray-700 dark:iti-border-gray-600 dark:iti-placeholder-gray-400 dark:iti-text-white dark:focus:iti-ring-blue-500 dark:focus:iti-border-blue-500;
+  }
+
+  .check-login {
+    @apply iti-w-4 iti-h-4 iti-border iti-border-gray-300 iti-rounded iti-bg-gray-50 focus:iti-ring-blue-300 dark:iti-bg-gray-700 dark:iti-border-gray-600 dark:focus:iti-ring-blue-600 dark:iti-ring-offset-gray-800;
+  }
+
+  .submit-login {
+    @apply iti-w-full iti-text-white iti-bg-blue-600 hover:iti-bg-blue-700 focus:iti-ring-4 focus:iti-outline-none focus:iti-ring-blue-300 iti-font-medium iti-rounded-lg iti-text-sm iti-px-5 iti-py-2.5 iti-text-center dark:iti-bg-blue-600 dark:hover:iti-bg-blue-700 dark:focus:iti-ring-blue-800;
+  }
+}
+

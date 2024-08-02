@@ -38,9 +38,9 @@ export default ({...props}: HeaderProps) => {
                         )}
                     </div>
                     <div className="iti-flex iti-items-center lg:iti-order-2">
-                        {!Boolean(user)? <Link onClick={() => setUser(true)} to="/login" className="iti-text-gray-800 dark:iti-text-white hover:iti-bg-gray-50 focus:iti-ring-4 focus:iti-ring-gray-300 iti-font-medium iti-rounded-lg iti-text-sm iti-px-4 lg:iti-px-5 iti-py-2 lg:iti-py-2.5 iti-mr-2 dark:hover:iti-bg-gray-700 focus:iti-outline-none dark:focus:iti-ring-gray-800">Log in</Link> : <Link to="/login" onClick={handleLogout} className="iti-text-red-800 dark:iti-text-red iti-bg-white hover:iti-bg-opacity-90 focus:iti-ring-4 focus:iti-ring-gray-300 iti-font-medium iti-rounded-lg iti-text-sm iti-px-4 lg:iti-px-5 iti-py-2 lg:iti-py-2.5 iti-mr-2 dark:hover:iti-bg-opacity-90 focus:iti-outline-none dark:focus:iti-ring-gray-800">Logout</Link>}
+                        {!Boolean(user)? <Link to="/login" className="btn-login">Log in</Link> : <Link to="/login" onClick={handleLogout} className="btn-logout">Logout</Link>}
                         {!Boolean(user) && (
-                            <Link to="#" className="iti-text-white iti-bg-blue-700 hover:iti-bg-blue-800 focus:iti-ring-4 focus:iti-ring-blue-300 iti-font-medium iti-rounded-lg iti-text-sm iti-px-4 lg:iti-px-5 iti-py-2 lg:iti-py-2.5 iti-mr-2 dark:iti-bg-blue-600 dark:hover:iti-bg-blue-700 focus:iti-outline-none dark:focus:iti-ring-blue-800">Get started</Link>
+                            <Link to="#" className="btn-get-started">Get started</Link>
                         )}
                     </div>
                 </div>
