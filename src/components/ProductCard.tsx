@@ -3,12 +3,12 @@ import React, { useState } from "react";
 
 interface ProductCardProps extends ComponentProps<'div'> {
   name: string;
-  price: string;
+  price: number;
   image: string;  
   prodID: number;
 }
 
-const ProductCard = ({ name, price = 'N/A', image, children, prodID, ...props }: ProductCardProps) => {
+const ProductCard = ({ name, price = 0, image, children, prodID, ...props }: ProductCardProps) => {
   
   if(!Boolean(name)) {
     return null;
