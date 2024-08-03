@@ -34,5 +34,7 @@
   .submit-login {
     @apply iti-w-full iti-text-white iti-bg-blue-600 hover:iti-bg-blue-700 focus:iti-ring-4 focus:iti-outline-none focus:iti-ring-blue-300 iti-font-medium iti-rounded-lg iti-text-sm iti-px-5 iti-py-2.5 iti-text-center dark:iti-bg-blue-600 dark:hover:iti-bg-blue-700 dark:focus:iti-ring-blue-800;
   }
+  .form-input {
+    @apply iti-bg-gray-50 iti-border iti-border-gray-300 iti-text-gray-900 iti-rounded-lg focus:iti-ring-blue-600 focus:iti-border-blue-600 iti-block iti-w-full iti-p-2.5 dark:iti-bg-gray-700 dark:iti-border-gray-600 dark:iti-placeholder-gray-400 dark:iti-text-white dark:focus:iti-ring-blue-500 dark:focus:iti-border-blue-500; 
+  }
 }
-

@@ -15,7 +15,7 @@ interface HeaderProps extends React.ComponentProps<'header'> {
 
 export default ({...props}: HeaderProps) => {
 
-    const { user, setUser } = useContext(AppContext);
+    const { user, setUser, token } = useContext(AppContext);
 
     const handleLogout = () => {
         setUser(null);
@@ -29,7 +29,7 @@ export default ({...props}: HeaderProps) => {
                         <span className="iti-self-center iti-text-xl iti-font-semibold iti-whitespace-nowrap dark:iti-text-white">E-Commerce</span>
                     </a>
                     <div className="iti-flex iti-justify-between iti-items-center lg:iti-flex lg:iti-w-auto lg:iti-order-1" id="mobile-menu-2">
-                        {Boolean(user) && (
+                        {Boolean(token) && (
                             <ul className="iti-flex iti-font-medium lg:iti-flex-row lg:iti-space-x-8 lg:iti-mt-0">
                                 {navItems.map(item => (
                                     <NavItem key={item.key} label={item.label} href={item.href} />
@@ -38,8 +38,8 @@ export default ({...props}: HeaderProps) => {
                         )}
                     </div>
                     <div className="iti-flex iti-items-center lg:iti-order-2">
-                        {!Boolean(user)? <Link to="/login" className="btn-login">Log in</Link> : <Link to="/login" onClick={handleLogout} className="btn-logout">Logout</Link>}
-                        {!Boolean(user) && (
+                        {!Boolean(token)? <Link to="/login" className="btn-login">Log in</Link> : <Link to="/login" onClick={handleLogout} className="btn-logout">Logout</Link>}
+                        {!Boolean(token) && (
                             <Link to="#" className="btn-get-started">Get started</Link>
                         )}
                     </div>

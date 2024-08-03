@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import type { User } from '../types/user';
 import { useContext, useEffect } from 'react';
 import { AppContext } from '../contexts/AppContext';
@@ -22,24 +22,25 @@ export const LoginForm = () => {
 
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  const { setUser } = useContext(AppContext);
+  const { setToken, setRefreshToken } = useContext(AppContext)
 
-  const mutation = useMutation<User, AxiosError>({
-    mutationKey: ["login"],
-    mutationFn: async (data) => {
-      return await axios.post('https://dummyjson.com/auth/login', data)
+  const mutation = useMutation({
+    mutationKey: ['userAuth'],
+    mutationFn: async (data: any) => {
+      return (await axios.post('https://dummyjson.com/auth/login', {...data, expiresInMins: 1})).data
     }
   })
-
+  
   const handleFormValues = (data: any) => {
-    mutation.mutate(data)
+    mutation.mutate(data);
   } 
 
   useEffect(() => {
     if(mutation.data) {
-      setUser(mutation.data);
+      setToken(mutation.data.token);
+      setRefreshToken(mutation.data.refreshToken);
     }
-  }, [mutation.data])
+  }, [ mutation.data ])
   
   return (
     <div className="iti-flex iti-flex-col iti-items-center iti-justify-center iti-mx-auto  lg:iti-py-0">
@@ -52,12 +53,12 @@ export const LoginForm = () => {
                 <form onSubmit={handleSubmit(handleFormValues)} className="iti-space-y-4 md:iti-space-y-6" action="#">
                     <div>
                         <label htmlFor="username" className="iti-block iti-mb-2 iti-text-sm iti-font-medium iti-text-gray-900 dark:iti-text-white">Username</label>
-                        <input id="username" className="input-login" placeholder="Enter Your username" {...register('username')} />
+                        <input id="username" className="form-input" placeholder="Enter Your username" {...register('username')} />
                         {errors.username?.message && <p className="iti-text-red-500 iti-text-xs iti-italic">{errors.username.message}</p>}
                     </div>
                     <div>
                         <label htmlFor="password" className="iti-block iti-mb-2 iti-text-sm iti-font-medium iti-text-gray-900 dark:iti-text-white">Password</label>
-                        <input id="password" type="password" className="input-login" placeholder="••••••••" {...register('password')} />
+                        <input id="password" type="password" className="form-input" placeholder="••••••••" {...register('password')} />
                         {errors.password?.message && <p className="iti-text-red-500 iti-text-xs iti-italic">{errors.password.message}</p>}
                     </div>
                     <div className="iti-flex iti-items-center iti-justify-between">

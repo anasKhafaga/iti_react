@@ -1,20 +1,31 @@
 import ProductCard from '../components/ProductCard';
+import { useContext, useEffect } from 'react';
+import { AppContext } from '../contexts/AppContext';
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import { AxiosError } from 'axios';
+import { useUnAuth } from '../hooks/unAuth';
 import { ProductResponse } from '../types/products';
+
 
 const Home = () => {
 
-  const { data, isLoading } = useQuery<ProductResponse>({
-    queryKey: ['products'],
-    queryFn: async() => {
-      return (await axios.get('https://dummyjson.com/products')).data
-    }
+  const { itiAxios, refreshToken } = useContext(AppContext);
+
+  const { data, isLoading, error } = useQuery<ProductResponse, AxiosError>({
+    queryKey: ['products', refreshToken],
+    queryFn: async () => {
+      return (await itiAxios.get('/products')).data;
+    },
+    retry: 0
   })
-  
+
+  useUnAuth(error as AxiosError);
+
+
+
   return (
     <div className='iti-w-full iti-grid iti-grid-cols-3 iti-gap-x-2 iti-gap-y-6'>
-      {isLoading? "Loading" : data?.products.map(record => (
+      { isLoading? 'Loading' : data?.products.map((record) => (
         <ProductCard
           key={record.id}
           name={record.title}
