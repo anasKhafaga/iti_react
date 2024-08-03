@@ -15,10 +15,12 @@ interface HeaderProps extends React.ComponentProps<'header'> {
 
 export default ({...props}: HeaderProps) => {
 
-    const { user, setUser, token } = useContext(AppContext);
+    const { setToken, setRefreshToken, setUser, token } = useContext(AppContext);
 
     const handleLogout = () => {
         setUser(null);
+        setToken('');
+        setRefreshToken('');
     }
     
     return (

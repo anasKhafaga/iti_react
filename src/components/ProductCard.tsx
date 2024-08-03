@@ -1,5 +1,4 @@
 import type { ComponentProps } from "react";
-import React, { useState } from "react";
 
 interface ProductCardProps extends ComponentProps<'div'> {
   name: string;

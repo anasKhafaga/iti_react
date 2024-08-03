@@ -24,7 +24,7 @@ export const LoginForm = () => {
 
   const { setToken, setRefreshToken } = useContext(AppContext)
 
-  const mutation = useMutation({
+  const mutation = useMutation<User>({
     mutationKey: ['userAuth'],
     mutationFn: async (data: any) => {
       return (await axios.post('https://dummyjson.com/auth/login', {...data, expiresInMins: 1})).data

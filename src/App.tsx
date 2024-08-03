@@ -12,7 +12,6 @@ import { QueryClientProvider, QueryClient, useMutation } from '@tanstack/react-q
 import { useAxios } from "./hooks/itiAxios";
 import { ErrorBoundary } from 'react-error-boundary';
 import Fallback from "./components/Fallback";
-import axios from "axios";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,7 +30,7 @@ function App() {
 
   const { itiAxios } = useAxios(token);
   
-  // const { pathname, state } = useLocation<{from: string}>();  
+  const { pathname, state } = useLocation<{from: string}>();  
 
   useEffect(() => {
     cookie.set('token', token)
@@ -57,11 +56,11 @@ function App() {
     }
   }, [refreshTokenMutation.data])
   
-  // if(pathname !== '/login' && !Boolean(token)) {
-  //   return <Redirect to={{ pathname: '/login', state: {from: pathname} }} />
-  // } else if(pathname === '/login' && Boolean(token)) {
-  //   return <Redirect to={{ pathname: state?.from ?? '/' }} />
-  // }
+  if(pathname !== '/login' && !Boolean(token) && !Boolean(refreshToken)) {
+    return <Redirect to={{ pathname: '/login', state: {from: pathname} }} />
+  } else if(pathname === '/login' && (Boolean(token) || Boolean(refreshToken))) {
+    return <Redirect to={{ pathname: state?.from ?? '/' }} />
+  }
   
   return (
     <ErrorBoundary fallbackRender={Fallback}>

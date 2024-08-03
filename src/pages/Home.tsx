@@ -1,5 +1,5 @@
 import ProductCard from '../components/ProductCard';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 import { useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
